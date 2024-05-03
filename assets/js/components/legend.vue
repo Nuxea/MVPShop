@@ -1,13 +1,13 @@
 <script setup>
-import {ref} from "vue";
 
-const shippingMessage = ref('Shipping takes 10-12 weeks, and products probably won\'t work');
-
+const props = defineProps({
+    'legend': String,
+})
 </script>
 
 <template>
     <span class="p-3">
-        {{ shippingMessage }}
+        {{ legend }}
     </span>
 </template>
 

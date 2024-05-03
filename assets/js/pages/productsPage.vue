@@ -1,6 +1,8 @@
 <script setup>
-
 import Legend from "../components/legend.vue";
+import {ref} from "vue";
+
+const shippingMessage = ref('Shipping takes 10-12 weeks, and products probably won\'t work');
 </script>
 
 <template>
@@ -50,7 +52,7 @@ import Legend from "../components/legend.vue";
                     </div>
                 </div>
                 <div class="row">
-                    <Legend />
+                    <Legend :legend="shippingMessage" />
                 </div>
             </div>
         </div>
