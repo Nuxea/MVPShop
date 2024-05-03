@@ -1,5 +1,6 @@
 <script setup>
-const name = 'Amandine';
+
+import Legend from "../components/legend.vue";
 </script>
 
 <template>
@@ -17,7 +18,7 @@ const name = 'Amandine';
                         <li class="nav-item">
                             <a
                                 class="nav-link"
-                                href="/"
+                                href="/public"
                             >All Products</a>
                         </li>
                         <li class="nav-item">
@@ -39,7 +40,7 @@ const name = 'Amandine';
                 <div class="row">
                     <div class="col-12">
                         <h1>
-                            {{ name }}
+                            Products
                         </h1>
                     </div>
                 </div>
@@ -49,9 +50,7 @@ const name = 'Amandine';
                     </div>
                 </div>
                 <div class="row">
-                    <span class="p-3">
-                        Shipping takes 10-12 weeks, and products probably won't work
-                    </span>
+                    <Legend />
                 </div>
             </div>
         </div>
