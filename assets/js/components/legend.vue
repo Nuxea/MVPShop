@@ -1,8 +1,12 @@
 <script setup>
 
-const props = defineProps({
-    'legend': String,
+defineProps({
+    'legend': {
+        type: String,
+        required: true,
+    },
 })
+
 </script>
 
 <template>
