@@ -1,0 +1,67 @@
+<script setup>
+const name = 'Amandine';
+</script>
+
+<template>
+    <div
+        class="container-fluid mt-5 py-5"
+        style="height: calc(100vh - 120px)"
+    >
+        <div class="row">
+            <aside class="col-xs-12 col-3">
+                <div class="sidebar p-3 mb-5">
+                    <h5 class="text-center">
+                        Categories
+                    </h5>
+                    <ul class="navbar-nav flex-column mb4">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="/"
+                            >All Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="#"
+                            >Category A</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="#"
+                            >Category B</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <div class="col-xs-12 col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>
+                            {{ name }}
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-6 mb-2 pb-2">
+                        TODO - load some products!
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="p-3">
+                        Shipping takes 10-12 weeks, and products probably won't work
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.sidebar {
+  border: 1px solid #efefee;
+  box-shadow: 0 0 7px 4px #efefee;
+  border-radius: 5px;
+}
+</style>
