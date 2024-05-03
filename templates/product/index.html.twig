@@ -2,11 +2,21 @@
 
 {% block title %}Products{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('products') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('products') }}
+{% endblock %}
+
 {% block body %}
     <div class="container mt-5 py-5" style="height: calc(100vh - 120px)">
         <div class="row">
             <div class="col-sm">
-                <h1>Hi! I would ❤️ it if someone put a Vue app here...</h1>
+                <div id="app"></div>
             </div>
         </div>
     </div>
