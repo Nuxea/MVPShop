@@ -1,5 +1,8 @@
 <script setup>
 
+import {ref} from "vue";
+
+const collapsed = ref(false);
 const categories = [
     {
         name: 'Dot Matrix Printers',
@@ -13,7 +16,10 @@ const categories = [
 </script>
 
 <template>
-    <div class="sidebar p-3 mb-5">
+    <div
+        :style="{ width: collapsed ? '70px' : 'auto' }"
+        class="sidebar p-3 mb-5"
+    >
         <h5 class="text-center">
             Categories
         </h5>
@@ -35,6 +41,14 @@ const categories = [
                 >{{ category.name }}</a>
             </li>
         </ul>
+
+        <div class="d-flex justify-content-end">
+            <button
+                class="btn btn-secondary btn-sm"
+                @click="collapsed = !collapsed"
+                v-text="collapsed ? '>>' : '<<'"
+            />
+        </div>
     </div>
 </template>
 
