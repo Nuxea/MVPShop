@@ -1,8 +1,7 @@
 <script setup>
-import Legend from "../components/legend.vue";
-import {ref} from "vue";
+import Catalog from "../components/catalog.vue";
+import Sidebar from "../components/sidebar.vue";
 
-const shippingMessage = ref('Shipping takes 10-12 weeks, and products probably won\'t work');
 </script>
 
 <template>
@@ -11,58 +10,16 @@ const shippingMessage = ref('Shipping takes 10-12 weeks, and products probably w
         style="height: calc(100vh - 120px)"
     >
         <div class="row">
-            <aside class="col-xs-12 col-3">
-                <div class="sidebar p-3 mb-5">
-                    <h5 class="text-center">
-                        Categories
-                    </h5>
-                    <ul class="navbar-nav flex-column mb4">
-                        <li class="nav-item">
-                            <a
-                                class="nav-link"
-                                href="/public"
-                            >All Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                class="nav-link"
-                                href="#"
-                            >Category A</a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                class="nav-link"
-                                href="#"
-                            >Category B</a>
-                        </li>
-                    </ul>
-                </div>
+            <aside class="col-12 col-md-3 col-3">
+                <Sidebar />
             </aside>
-            <div class="col-xs-12 col-9">
-                <div class="row">
-                    <div class="col-12">
-                        <h1>
-                            Products
-                        </h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-6 mb-2 pb-2">
-                        TODO - load some products!
-                    </div>
-                </div>
-                <div class="row">
-                    <Legend :legend="shippingMessage" />
-                </div>
+            <div class="col-12 col-md-9 col-9">
+                <Catalog />
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.sidebar {
-  border: 1px solid #efefee;
-  box-shadow: 0 0 7px 4px #efefee;
-  border-radius: 5px;
-}
+
 </style>
