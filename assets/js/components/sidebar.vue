@@ -1,5 +1,15 @@
 <script setup>
 
+const categories = [
+    {
+        name: 'Dot Matrix Printers',
+        link: '#',
+    },
+    {
+        name: 'Iomega Zip Drives',
+        link: '#',
+    },
+];
 </script>
 
 <template>
@@ -14,17 +24,15 @@
                     href="/public"
                 >All Products</a>
             </li>
-            <li class="nav-item">
+            <li
+                v-for="(category, index) in categories"
+                :key="index"
+                class="nav-item"
+            >
                 <a
                     class="nav-link"
-                    href="#"
-                >Category A</a>
-            </li>
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="#"
-                >Category B</a>
+                    :href="category.link"
+                >{{ category.name }}</a>
             </li>
         </ul>
     </div>
