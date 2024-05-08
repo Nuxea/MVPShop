@@ -40,7 +40,7 @@
 .sidebar ul li:hover {
   border-radius: 10px;
   background: #0d5aa7;
-  padding: 5%;
+  padding: 2%;
   transition: all 1s;
 }
 </style>

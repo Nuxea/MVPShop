@@ -1,6 +1,6 @@
 <script setup>
-import Catalog from "../components/catalog.vue";
-import Sidebar from "../components/sidebar.vue";
+import Catalog from "@/components/catalog.vue";
+import Sidebar from "@/components/sidebar.vue";
 
 </script>
 
