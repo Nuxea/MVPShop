@@ -1,5 +1,4 @@
 <script setup>
-
 import {ref} from "vue";
 
 const collapsed = ref(false);
@@ -17,37 +16,41 @@ const categories = [
 
 <template>
     <div
-        :style="{ width: collapsed ? '70px' : 'auto' }"
+        :class="collapsed ? 'collapsed' : ''"
         class="sidebar p-3 mb-5"
     >
-        <h5 class="text-center">
-            Categories
-        </h5>
-        <ul class="navbar-nav flex-column mb-4">
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="/public"
-                >All Products</a>
-            </li>
-            <li
-                v-for="(category, index) in categories"
-                :key="index"
-                class="nav-item"
-            >
-                <a
-                    class="nav-link"
-                    :href="category.link"
-                >{{ category.name }}</a>
-            </li>
-        </ul>
-
         <div class="d-flex justify-content-end">
             <button
-                class="btn btn-secondary btn-sm"
+                class="btn btn-outline-light btn-sm px-3 py-2"
                 @click="collapsed = !collapsed"
-                v-text="collapsed ? '>>' : '<<'"
+                v-text="collapsed ? '>' : '<'"
             />
+        </div>
+        
+        <div v-if="!collapsed">
+            <hr>
+
+            <h5 class="text-center">
+                Categories
+            </h5>
+            <ul class="navbar-nav flex-column mb-4">
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/public"
+                    >All Products</a>
+                </li>
+                <li
+                    v-for="(category, index) in categories"
+                    :key="index"
+                    class="nav-item"
+                >
+                    <a
+                        class="nav-link"
+                        :href="category.link"
+                    >{{ category.name }}</a>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -65,4 +68,9 @@ const categories = [
   padding: 2%;
   transition: all 1s;
 }
+
+.collapsed {
+  width: 70px;
+}
+
 </style>
