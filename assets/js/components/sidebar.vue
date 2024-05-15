@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue";
+import {computed, reactive, ref} from "vue";
 
 const collapsed = ref(false);
 const categories = [
@@ -12,17 +12,22 @@ const categories = [
         link: '#',
     },
 ];
+
+const componentClasses = computed(() => {
+    return collapsed.value ? 'sidebar collapsed p-3 mb-5'  : 'sidebar p-3 mb-5';
+})
+
+const toggleCollapsed = reactive(() => {
+    collapsed.value = !collapsed.value
+})
 </script>
 
 <template>
-    <div
-        :class="collapsed ? 'collapsed' : ''"
-        class="sidebar p-3 mb-5"
-    >
+    <div :class="componentClasses">
         <div class="d-flex justify-content-end">
             <button
                 class="btn btn-outline-light btn-sm px-3 py-2"
-                @click="collapsed = !collapsed"
+                @click="toggleCollapsed"
                 v-text="collapsed ? '>' : '<'"
             />
         </div>
