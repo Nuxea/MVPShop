@@ -1,7 +1,15 @@
 <script setup>
-import {computed, reactive, ref} from "vue";
+import {computed} from "vue";
 
-const collapsed = ref(false);
+const props = defineProps({
+    collapsed: {
+        type: Boolean,
+        required: true
+    }
+})
+
+const emit = defineEmits(['toggle-collapsed'])
+
 const categories = [
     {
         name: 'Dot Matrix Printers',
@@ -14,12 +22,9 @@ const categories = [
 ];
 
 const componentClasses = computed(() => {
-    return collapsed.value ? 'sidebar collapsed p-3 mb-5'  : 'sidebar p-3 mb-5';
+    return props.collapsed ? 'sidebar collapsed p-3 mb-5'  : 'sidebar p-3 mb-5';
 })
 
-const toggleCollapsed = reactive(() => {
-    collapsed.value = !collapsed.value
-})
 </script>
 
 <template>
@@ -27,7 +32,7 @@ const toggleCollapsed = reactive(() => {
         <div class="d-flex justify-content-end">
             <button
                 class="btn btn-outline-light btn-sm px-3 py-2"
-                @click="toggleCollapsed"
+                @click="emit('toggle-collapsed')"
                 v-text="collapsed ? '>' : '<'"
             />
         </div>
