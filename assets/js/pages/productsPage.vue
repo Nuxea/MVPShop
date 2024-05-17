@@ -1,12 +1,20 @@
 <script setup>
 import Catalog from "@/components/catalog.vue";
 import Sidebar from "@/components/sidebar.vue";
-import {reactive, ref} from "vue";
+import {computed, reactive, ref} from "vue";
 
 const sidebarCollapsed = ref(false);
 
 const toggleSidebarCollapsed = reactive(() => {
     sidebarCollapsed.value = !sidebarCollapsed.value
+})
+
+const asideClasses = computed(() => {
+    return sidebarCollapsed.value ? 'col-md-1 col-12'  : 'col-md-3 col-3';
+})
+
+const contentClasses = computed(() => {
+    return sidebarCollapsed.value ? 'col-12 col-md-11'  : 'col-12 col-md-9';
 })
 </script>
 
@@ -16,13 +24,13 @@ const toggleSidebarCollapsed = reactive(() => {
         style="height: calc(100vh - 120px)"
     >
         <div class="row">
-            <aside class="col-12 col-md-3 col-3">
+            <aside :class="asideClasses">
                 <Sidebar
                     :collapsed="sidebarCollapsed"
                     @toggle-collapsed="toggleSidebarCollapsed"
                 />
             </aside>
-            <div class="col-12 col-md-9 col-9">
+            <div :class="contentClasses">
                 <Catalog />
             </div>
         </div>
