@@ -1,6 +1,14 @@
 <script setup>
 import Legend from "@/components/legend.vue";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import axios from "axios";
+
+onMounted(() => {
+    axios.get('/api/products').then((response) => {
+        console.log(response)
+    });
+
+})
 
 const shippingMessage = ref('Shipping takes 10-12 weeks, and products probably won\'t work');
 </script>
