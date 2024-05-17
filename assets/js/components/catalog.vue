@@ -6,9 +6,9 @@ import axios from "axios";
 const products = ref([])
 
 onMounted(async () => {
-  const response = await axios.get('/api/products');
+    const response = await axios.get('/api/products');
 
-  products.value = response.data['hydra:member'];
+    products.value = response.data['hydra:member'];
 })
 
 const shippingMessage = ref('Shipping takes 10-12 weeks, and products probably won\'t work');
@@ -24,7 +24,11 @@ const shippingMessage = ref('Shipping takes 10-12 weeks, and products probably w
             </div>
         </div>
         <div class="row">
-            <div v-for="product in products" :key="product['@id']" class="col-12 col-md-6 mb-2 pb-2">
+            <div
+                v-for="product in products"
+                :key="product['@id']"
+                class="col-12 col-md-6 mb-2 pb-2"
+            >
                 {{ product.name }}
             </div>
         </div>
