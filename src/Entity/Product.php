@@ -8,45 +8,55 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-#[ApiResource]
+#[ApiResource(normalizationContext: ['groups' => ['read']])]
 class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('read')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('read')]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups('read')]
     private ?string $description = null;
 
     #[ORM\Column(length: 20)]
     private ?string $brand = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('read')]
     private ?float $weight = null;
 
     #[ORM\Column]
+    #[Groups('read')]
     private ?int $price = null;
 
     #[ORM\Column]
+    #[Groups('read')]
     private ?int $stockQuantity = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('read')]
     private ?Category $category = null;
 
     /**
      * @var Collection<int, Color>
      */
     #[ORM\ManyToMany(targetEntity: Color::class)]
+    #[Groups('read')]
     private Collection $colors;
 
     #[ORM\Column(length: 255)]
+    #[Groups('read')]
     private ?string $imageFilename = null;
 
     public function __construct()
@@ -162,7 +172,9 @@ class Product
 
     public function removeColor(Color $color): static
     {
-        $this->colors->removeElement($color);
+        if ($this->colors->contains($color)) {
+            $this->colors->removeElement($color);
+        }
 
         return $this;
     }
