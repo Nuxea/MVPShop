@@ -1,5 +1,6 @@
 <script setup>
-import {computed} from "vue";
+import {computed, onMounted, ref} from "vue";
+import axios from "axios";
 
 const props = defineProps({
     collapsed: {
@@ -10,21 +11,17 @@ const props = defineProps({
 
 const emit = defineEmits(['toggle-collapsed'])
 
-const categories = [
-    {
-        name: 'Dot Matrix Printers',
-        link: '#',
-    },
-    {
-        name: 'Iomega Zip Drives',
-        link: '#',
-    },
-];
+const categories = ref([]);
 
 const componentClasses = computed(() => {
     return props.collapsed ? 'sidebar collapsed p-3 mb-5'  : 'sidebar p-3 mb-5';
 })
 
+onMounted(async () => {
+    const response = await axios.get('/api/categories');
+
+    categories.value = response.data['hydra:member'];
+})
 </script>
 
 <template>
@@ -51,13 +48,13 @@ const componentClasses = computed(() => {
                     >All Products</a>
                 </li>
                 <li
-                    v-for="(category, index) in categories"
-                    :key="index"
+                    v-for="category in categories"
+                    :key="category['@id']"
                     class="nav-item"
                 >
                     <a
                         class="nav-link"
-                        :href="category.link"
+                        :href="`/categories/${category.id}`"
                     >{{ category.name }}</a>
                 </li>
             </ul>
