@@ -15,43 +15,37 @@ const price = computed(() => {
 </script>
 
 <template>
-    <div class="col-12 col-md-6 mb-2 pb-2">
-        <div class="product-box">
-            <div class="image">
-                <img
-                    :alt="product.name"
-                    :src="product.imageFilename"
-                    class="img-fluid mb-2"
-                >
-                <h3 class="font-weight-bold mb-2 px-2">
-                    {{ product.name }}
-                </h3>
-            </div>
-            <div class="p-2 my-3 d-md-flex justify-content-between">
-                <p class="p-0 d-inline">
-                    <strong>${{ price }}</strong>
-                </p>
+    <div class="col-12 col-md-4 mb-2 pb-2">
+        <div class="card border-dark">
+            <img
+                :alt="product.name"
+                :src="product.imageFilename"
+                class="card-img-top mb-2"
+            >
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="card-title mb-2 px-2">
+                        {{ product.name }}
+                    </h5>
+                    <p class="p-0 card-text">
+                        <strong>${{ price }}</strong>
+                    </p>
+                </div>
+
                 <button
-                    class="btn btn-info btn-sm"
+                    class="btn btn-outline-dark w-100"
                 >
                     View Product
                 </button>
             </div>
-        </div>
-        <hr>
-        <div class="px-2 pb-2">
-            <small>brought to you by {{ product.brand }}</small>
+            <div class="card-footer">
+                <small>brought to you by {{ product.brand }}</small>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.product-box {
-  border: 1px solid #efefee;
-  box-shadow: 0 0 7px 4px #efefee;
-  border-radius: 5px;
-}
-
 .image img {
     width: 100%;
     height: auto;

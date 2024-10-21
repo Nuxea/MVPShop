@@ -1,7 +1,7 @@
 <script setup>
 import Catalog from "@/components/catalog.vue";
 import Sidebar from "@/components/sidebar.vue";
-import {computed, reactive, ref} from "vue";
+import {computed, ref} from "vue";
 
 const sidebarCollapsed = ref(false);
 
@@ -10,7 +10,7 @@ const toggleSidebarCollapsed = () => {
 }
 
 const asideClasses = computed(() => {
-    return sidebarCollapsed.value ? 'col-md-1 col-12'  : 'col-md-3 col-3';
+    return sidebarCollapsed.value ? 'col-md-1 col-12'  : 'col-md-3';
 })
 
 const contentClasses = computed(() => {
